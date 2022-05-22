@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'JosefinSansRegular';
+  src: url(./fonts/JosefinSans-Regular.ttf) format('woff');
+  font-display: block;
+}
+@font-face {
+  font-family: 'JosefinSansBold';
+  src: url(./fonts/JosefinSans-Bold.ttf) format('woff');
+  font-display: block;
+}
+@font-face {
+  font-family: 'JosefinSansMedium';
+  src: url(./fonts/JosefinSans-Medium.ttf) format('woff');
+  font-display: block;
+}
