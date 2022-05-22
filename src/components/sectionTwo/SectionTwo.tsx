@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Card } from '../card/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMinValue, setMaxValue } from '../../store/slice/minAndMaxSlice';
+import { getNumbersForSearch } from '../../tools/getNombersForSearch';
 import { storeType } from '../../store';
 import {
   GeneralContainerTwo,
@@ -20,14 +21,16 @@ export const SectionTwo = () => {
   const dispatch = useDispatch();
 
   const handlerSearch = () => {
-    console.log('hola ' + redFlag);
-
-    if (minValue > maxValue) {
-      setRedFlag(true);
+    setRedFlag(false);
+    if (minValue >= 1 && maxValue <= 800) {
+      if (maxValue <= minValue + 9 && maxValue >= minValue + 2) {
+        const { numMin, numMax } = getNumbersForSearch(minValue, maxValue);
+      } else {
+        setRedFlag(true);
+      }
     } else {
-      setRedFlag(false);
+      setRedFlag(true);
     }
-    console.log('chao ' + redFlag);
   };
   return (
     <GeneralContainerTwo>
