@@ -3,7 +3,10 @@ import { Card } from '../card/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMinValue, setMaxValue } from '../../store/slice/minAndMaxSlice';
 import { getNumbersForSearch } from '../../tools/getNombersForSearch';
-import { storeType } from '../../store';
+import { getIdsForApi } from '../../tools/getIdsForApi';
+import { storeType, storeDispatchType } from '../../store';
+import { fetchRamApi } from '../../store/slice/fetchAPI';
+import { setCharacterList } from '../../store/slice/fetchAPI';
 import {
   GeneralContainerTwo,
   Title,
@@ -15,16 +18,22 @@ import {
 } from './SectionTwo.elements';
 export const SectionTwo = () => {
   const [redFlag, setRedFlag] = useState(false);
+  const { characterList } = useSelector(
+    (state: storeType) => state.CharactersReducer
+  );
   const { minValue, maxValue } = useSelector(
     (state: storeType) => state.minAndMaxReducer
   );
-  const dispatch = useDispatch();
+  const dispatch: storeDispatchType = useDispatch();
 
   const handlerSearch = () => {
     setRedFlag(false);
     if (minValue >= 1 && maxValue <= 800) {
       if (maxValue <= minValue + 9 && maxValue >= minValue + 2) {
-        const { numMin, numMax } = getNumbersForSearch(minValue, maxValue);
+        const numbersForApi = getIdsForApi(minValue, maxValue);
+        console.log(numbersForApi);
+        dispatch(fetchRamApi(numbersForApi));
+        console.log(characterList);
       } else {
         setRedFlag(true);
       }
@@ -64,9 +73,9 @@ export const SectionTwo = () => {
       <ButtonContent>
         <ButtonSearch onClick={() => handlerSearch()}>Search</ButtonSearch>
       </ButtonContent>
-      <Card />
-      <Card />
-      <Card />
+      {characterList.map((char, index) => (
+        <Card key={index} id={char.id} name={char.name} />
+      ))}
     </GeneralContainerTwo>
   );
 };

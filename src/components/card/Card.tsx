@@ -7,12 +7,12 @@ import {
   HighlightButton,
 } from './Card.elements';
 
-export const Card = () => {
+export const Card = ({ id, name }: { id: number; name: string }) => {
   return (
     <ContainerCard>
       <InfoContainer>
-        <div>id</div>
-        <div>name</div>
+        <div>{id}</div>
+        <div>{name}</div>
       </InfoContainer>
       <ButtonsContainer>
         <ButtonCart>Add to cart</ButtonCart>
