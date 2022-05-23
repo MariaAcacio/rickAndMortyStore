@@ -9,21 +9,27 @@ type charType = {
   gender: string;
   status: string;
   image: string;
-  episode: string;
+  episode: string[];
 };
+type StateCharList = { characterList: charType[]; highlightedChar?: charType };
+
 const fetchApiSlice = createSlice({
   name: 'characters',
   initialState: {
     characterList: [],
-  } as { characterList: charType[] },
+    highlightedChar: undefined,
+  } as StateCharList,
   reducers: {
     setCharacterList: (state, action) => {
       state.characterList = action.payload;
     },
+    setHighlightedChar: (state, action) => {
+      state.highlightedChar = action.payload;
+    },
   },
 });
 
-export const { setCharacterList } = fetchApiSlice.actions;
+export const { setCharacterList, setHighlightedChar } = fetchApiSlice.actions;
 export const CharactersReducer = fetchApiSlice.reducer;
 
 export const fetchRamApi =

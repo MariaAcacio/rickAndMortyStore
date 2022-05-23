@@ -74,7 +74,15 @@ export const SectionTwo = () => {
         <ButtonSearch onClick={() => handlerSearch()}>Search</ButtonSearch>
       </ButtonContent>
       {characterList.map((char, index) => (
-        <Card key={index} id={char.id} name={char.name} />
+        <Card
+          key={index}
+          id={char.id}
+          name={char.name}
+          gender={char.gender}
+          status={char.status}
+          image={char.image}
+          episode={char.episode}
+        />
       ))}
     </GeneralContainerTwo>
   );
