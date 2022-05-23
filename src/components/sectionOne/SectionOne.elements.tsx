@@ -4,7 +4,7 @@ export const GeneralContainer = styled.div`
   background-color: #0cfa54;
   padding: 1rem;
   height: auto;
-  width: 30%;
+  width: 70%;
   margin-top: 1rem;
   border-radius: 1rem;
   font-family: 'JosefinSansMedium';
@@ -40,12 +40,31 @@ export const GeneralInfoContainer = styled.div`
   justify-content: center;
   margin-top: 1rem;
 `;
-export const ListEpisodesContent = styled.div`
+export const EpisodesContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
+  /* background-color: yellow; */
+  /* width: 50%; */
+  padding: 0.2rem;
+  font-size: 2rem;
   margin-top: 1rem;
   font-family: 'JosefinSansRegular';
-  font-size: 1rem;
+  font-size: 2rem;
+  overflow: hidden;
+`;
+export const ListEpisodesContent = styled.div`
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* background-color: yellow; */
+  /* width: 50%; */
+  padding: 0.2rem;
+  font-size: 2rem;
+  /* margin-top: 1rem; */
+  font-family: 'JosefinSansRegular';
+  font-size: 1.5rem;
+  overflow: hidden;
 `;
 export const GenreContent = styled.div`
   display: flex;

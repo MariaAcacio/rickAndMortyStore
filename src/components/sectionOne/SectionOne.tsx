@@ -2,6 +2,7 @@ import { GiFemale, GiMale } from 'react-icons/gi';
 import { BsCircleFill } from 'react-icons/bs';
 import { storeType } from '../../store';
 import { useSelector } from 'react-redux';
+import { getNumberOfEpisodes } from '../../tools/getNumberOfEpisodes';
 import {
   GeneralContainer,
   NameCharacter,
@@ -11,6 +12,7 @@ import {
   ListEpisodesContent,
   GenreContent,
   AliveOrDeathContent,
+  EpisodesContainer,
 } from './SectionOne.elements';
 
 export const SectionOne = () => {
@@ -50,6 +52,7 @@ export const SectionOne = () => {
   };
 
   getStatusAndGender(status, gender);
+  const NumberOfEpisodes = getNumberOfEpisodes(episode);
   return (
     <>
       {highlightedChar && (
@@ -80,7 +83,12 @@ export const SectionOne = () => {
                 )}
               </AliveOrDeathContent>
             </GeneralInfoContainer>
-            <ListEpisodesContent>{`Appears in episodes: ${highlightedChar?.episode}`}</ListEpisodesContent>
+            <EpisodesContainer>
+              <div>Appears in episodes:</div>
+              <ListEpisodesContent>
+                {NumberOfEpisodes.join(', ')}
+              </ListEpisodesContent>
+            </EpisodesContainer>
           </div>
         </GeneralContainer>
       )}

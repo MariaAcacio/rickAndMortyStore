@@ -4,7 +4,7 @@ export const GeneralContentThree = styled.div`
   background-color: #116fad;
   padding: 1rem;
   height: auto;
-  width: 30%;
+  width: 70%;
   margin-top: 1rem;
   border-radius: 1rem;
   font-family: 'JosefinSansMedium';

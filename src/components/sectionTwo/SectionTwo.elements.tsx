@@ -6,7 +6,7 @@ export const GeneralContainerTwo = styled.div`
   flex-direction: column;
   padding: 1rem;
   /* height: auto; */
-  width: 30%;
+  width: 70%;
   margin-top: 1rem;
   border-radius: 1rem;
   font-family: 'JosefinSansMedium';
