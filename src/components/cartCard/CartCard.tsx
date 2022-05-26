@@ -21,10 +21,8 @@ export const CartCard = () => {
       </ContainerCart>
       <Features>
         <div>Counter:</div>
-        <div>Alive:</div>
-        <div>Dead:</div>
-        <div>Male:</div>
-        <div>Female:</div>
+        <div>Status:</div>
+        <div>Gender:</div>
       </Features>
     </General>
   );

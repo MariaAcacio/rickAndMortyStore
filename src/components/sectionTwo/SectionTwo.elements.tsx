@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const GeneralContainerTwo = styled.div`
-  background-color: #fa4c00;
+  background-color: #fa4b00;
   display: flex;
   flex-direction: column;
   padding: 1rem;

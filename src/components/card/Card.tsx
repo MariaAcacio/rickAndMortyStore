@@ -1,5 +1,5 @@
 import React from 'react';
-import { setHighlightedChar } from '../../store/slice/fetchAPI';
+import { setHighlightedChar, setCartList } from '../../store/slice/fetchAPI';
 import { useDispatch, useSelector } from 'react-redux';
 import { storeType } from '../../store';
 import {
@@ -25,7 +25,7 @@ export const Card = ({
   image: string;
   episode: string[];
 }) => {
-  const { highlightedChar, characterList } = useSelector(
+  const { cartList } = useSelector(
     (state: storeType) => state.CharactersReducer
   );
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ export const Card = ({
             dispatch(
               setHighlightedChar({ name, id, image, status, gender, episode })
             );
-            console.log(highlightedChar);
+            // console.log(highlightedChar);
           }}
         >
           Highlight

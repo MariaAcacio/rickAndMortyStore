@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { Card } from '../card/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMinValue, setMaxValue } from '../../store/slice/minAndMaxSlice';
-import { getNumbersForSearch } from '../../tools/getNombersForSearch';
 import { getIdsForApi } from '../../tools/getIdsForApi';
 import { storeType, storeDispatchType } from '../../store';
 import { fetchRamApi } from '../../store/slice/fetchAPI';
-import { setCharacterList } from '../../store/slice/fetchAPI';
+import { setIsLoading } from '../../store/slice/fetchAPI';
+import { Spinner } from '../spinner/Spinner';
 import {
   GeneralContainerTwo,
   Title,
@@ -18,7 +18,7 @@ import {
 } from './SectionTwo.elements';
 export const SectionTwo = () => {
   const [redFlag, setRedFlag] = useState(false);
-  const { characterList } = useSelector(
+  const { characterList, isLoading } = useSelector(
     (state: storeType) => state.CharactersReducer
   );
   const { minValue, maxValue } = useSelector(
@@ -31,9 +31,9 @@ export const SectionTwo = () => {
     if (minValue >= 1 && maxValue <= 800) {
       if (maxValue <= minValue + 9 && maxValue >= minValue + 2) {
         const numbersForApi = getIdsForApi(minValue, maxValue);
-        console.log(numbersForApi);
+        dispatch(setIsLoading(true));
         dispatch(fetchRamApi(numbersForApi));
-        console.log(characterList);
+        dispatch(setIsLoading(false));
       } else {
         setRedFlag(true);
       }
@@ -73,17 +73,21 @@ export const SectionTwo = () => {
       <ButtonContent>
         <ButtonSearch onClick={() => handlerSearch()}>Search</ButtonSearch>
       </ButtonContent>
-      {characterList.map((char, index) => (
-        <Card
-          key={index}
-          id={char.id}
-          name={char.name}
-          gender={char.gender}
-          status={char.status}
-          image={char.image}
-          episode={char.episode}
-        />
-      ))}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        characterList.map((char, index) => (
+          <Card
+            key={index}
+            id={char.id}
+            name={char.name}
+            gender={char.gender}
+            status={char.status}
+            image={char.image}
+            episode={char.episode}
+          />
+        ))
+      )}
     </GeneralContainerTwo>
   );
 };

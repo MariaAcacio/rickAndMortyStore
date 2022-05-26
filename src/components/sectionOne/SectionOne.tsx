@@ -30,7 +30,7 @@ export const SectionOne = () => {
   if (highlightedChar) {
     ({ name, id, status, gender, image, episode } = highlightedChar);
   }
-  console.log(id, name, status);
+  // console.log(id, name, status);
 
   let isAlive: boolean | undefined = true;
   let isMale: boolean = true;
@@ -85,9 +85,7 @@ export const SectionOne = () => {
             </GeneralInfoContainer>
             <EpisodesContainer>
               <div>Appears in episodes:</div>
-              <ListEpisodesContent>
-                {NumberOfEpisodes.join(', ')}
-              </ListEpisodesContent>
+              <ListEpisodesContent>{NumberOfEpisodes}</ListEpisodesContent>
             </EpisodesContainer>
           </div>
         </GeneralContainer>
