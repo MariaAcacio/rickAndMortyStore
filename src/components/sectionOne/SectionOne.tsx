@@ -70,13 +70,10 @@ export const SectionOne = () => {
                 )}
               </GenreContent>
               <AliveOrDeathContent>
-                {isAlive ? (
-                  <BsCircleFill size="2rem" color="green" />
-                ) : isAlive === false ? (
-                  <BsCircleFill size="2rem" color="red" />
-                ) : (
-                  <BsCircleFill size="2rem" color="grey" />
-                )}
+                <BsCircleFill
+                  size="2rem"
+                  color={isAlive ? 'green' : isAlive === false ? 'red' : 'grey'}
+                />
               </AliveOrDeathContent>
             </GeneralInfoContainer>
             <EpisodesContainer>

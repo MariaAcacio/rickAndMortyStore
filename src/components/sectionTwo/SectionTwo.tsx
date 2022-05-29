@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useCharacter, useMaxAndMin } from '../../hooks/useGlobalState';
 import { Card } from '../card/Card';
 import { useDispatch } from 'react-redux';
+import { useRedFlag } from '../../hooks/useRedFlag';
 import { setMinValue, setMaxValue } from '../../store/slice/minAndMaxSlice';
 import { getIdsForApi } from '../../tools/getIdsForApi';
 import { storeDispatchType } from '../../store';
@@ -18,23 +19,23 @@ import {
   ButtonContent,
 } from './SectionTwo.elements';
 export const SectionTwo = () => {
-  const [redFlag, setRedFlag] = useState(false);
+  const [redFlag, activateRedFlag] = useRedFlag();
   const { characterList, isLoading } = useCharacter();
   const { minValue, maxValue } = useMaxAndMin();
   const dispatch: storeDispatchType = useDispatch();
 
   const handlerSearch = () => {
-    setRedFlag(false);
+    // setRedFlag(false);
     if (minValue >= 1 && maxValue <= 800) {
       if (maxValue <= minValue + 9 && maxValue >= minValue + 2) {
         const numbersForApi = getIdsForApi(minValue, maxValue);
         dispatch(setIsLoading(true));
         dispatch(fetchRamApi(numbersForApi));
       } else {
-        setRedFlag(true);
+        activateRedFlag();
       }
     } else {
-      setRedFlag(true);
+      activateRedFlag();
     }
   };
   return (
