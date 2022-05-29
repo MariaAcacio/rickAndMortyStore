@@ -1,7 +1,7 @@
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import { setCartList } from '../../store/slice/fetchAPI';
-import { useDispatch, useSelector } from 'react-redux';
-import { storeType } from '../../store';
+import { useDispatch } from 'react-redux';
+import { useCharacter } from '../../hooks/useGlobalState';
 import {
   ContainerCart,
   ButtonContainer,
@@ -26,9 +26,7 @@ export const CartCard = ({
   counter: number;
 }): ReactJSXElement => {
   const dispatch = useDispatch();
-  const { cartList } = useSelector(
-    (state: storeType) => state.CharactersReducer
-  );
+  const { cartList } = useCharacter();
 
   const handlerDecreaseChar = () => {
     if (counter === 1) {

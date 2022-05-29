@@ -29,7 +29,6 @@ export const ImgContainer = styled.div`
 export const ImgCharacter = styled.img`
   width: 180px;
   height: 180px;
-  /* max-height: 10rem; */
   border-radius: 180px;
   overflow: hidden;
 `;
@@ -43,10 +42,6 @@ export const GeneralInfoContainer = styled.div`
 export const EpisodesContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  /* flex-direction: column; */
-  /* justify-content: space-between; */
-  /* background-color: yellow; */
-  /* width: 50%; */
   padding: 0.2rem;
   font-size: 2rem;
   margin-top: 1rem;
@@ -55,13 +50,8 @@ export const EpisodesContainer = styled.div`
   overflow: hidden;
 `;
 export const ListEpisodesContent = styled.div`
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* background-color: yellow; */
-  /* width: 50%; */
   padding: 0.2rem;
   font-size: 2rem;
-  /* margin-top: 1rem; */
   font-family: 'JosefinSansRegular';
   font-size: 1.5rem;
   overflow: hidden;

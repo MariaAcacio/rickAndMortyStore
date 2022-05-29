@@ -13,8 +13,6 @@ const minAndMaxSlice = createSlice({
   initialState: {
     minValue: 1,
     maxValue: 10,
-    minSearchValue: 1,
-    maxSearchValue: 10,
   },
   reducers: {
     setMinValue: (state, action: NumberAction) => {
@@ -23,12 +21,7 @@ const minAndMaxSlice = createSlice({
     setMaxValue: (state, action: NumberAction) => {
       state.maxValue = action.payload;
     },
-    setSearchValues: (state, action: SetSearchValuesAction) => {
-      state.minSearchValue = action.payload.minSearchValue;
-      state.maxSearchValue = action.payload.maxSearchValue;
-    },
   },
 });
-export const { setMinValue, setMaxValue, setSearchValues } =
-  minAndMaxSlice.actions;
+export const { setMinValue, setMaxValue } = minAndMaxSlice.actions;
 export const minAndMaxReducer = minAndMaxSlice.reducer;

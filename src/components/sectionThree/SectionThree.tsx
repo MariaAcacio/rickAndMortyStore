@@ -1,6 +1,5 @@
-import { useSelector } from 'react-redux';
+import { useCharacter } from '../../hooks/useGlobalState';
 import { CartCard } from '../cartCard/CartCard';
-import { storeType } from '../../store';
 import {
   GeneralContentThree,
   CartCardContainer,
@@ -8,9 +7,7 @@ import {
 } from './SectionThree.elements';
 
 export const SectionThree = () => {
-  const { cartList } = useSelector(
-    (state: storeType) => state.CharactersReducer
-  );
+  const { cartList } = useCharacter();
   let totalCharCounter = 0;
   cartList.forEach(
     (character) => (totalCharCounter = totalCharCounter + character.counter)

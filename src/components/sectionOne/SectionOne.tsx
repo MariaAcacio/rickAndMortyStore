@@ -1,7 +1,6 @@
 import { GiFemale, GiMale } from 'react-icons/gi';
 import { BsCircleFill } from 'react-icons/bs';
-import { storeType } from '../../store';
-import { useSelector } from 'react-redux';
+import { useCharacter } from '../../hooks/useGlobalState';
 import { getNumberOfEpisodes } from '../../tools/getNumberOfEpisodes';
 import {
   GeneralContainer,
@@ -16,9 +15,7 @@ import {
 } from './SectionOne.elements';
 
 export const SectionOne = () => {
-  const { highlightedChar } = useSelector(
-    (state: storeType) => state.CharactersReducer
-  );
+  const { highlightedChar } = useCharacter();
 
   let name: string = '';
   let id: number = 0;
@@ -30,7 +27,6 @@ export const SectionOne = () => {
   if (highlightedChar) {
     ({ name, id, status, gender, image, episode } = highlightedChar);
   }
-  // console.log(id, name, status);
 
   let isAlive: boolean | undefined = true;
   let isMale: boolean = true;

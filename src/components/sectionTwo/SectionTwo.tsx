@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { useCharacter, useMaxAndMin } from '../../hooks/useGlobalState';
 import { Card } from '../card/Card';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setMinValue, setMaxValue } from '../../store/slice/minAndMaxSlice';
 import { getIdsForApi } from '../../tools/getIdsForApi';
-import { storeType, storeDispatchType } from '../../store';
+import { storeDispatchType } from '../../store';
 import { fetchRamApi } from '../../store/slice/fetchAPI';
 import { setIsLoading } from '../../store/slice/fetchAPI';
 import { Spinner } from '../spinner/Spinner';
@@ -18,12 +19,8 @@ import {
 } from './SectionTwo.elements';
 export const SectionTwo = () => {
   const [redFlag, setRedFlag] = useState(false);
-  const { characterList, isLoading } = useSelector(
-    (state: storeType) => state.CharactersReducer
-  );
-  const { minValue, maxValue } = useSelector(
-    (state: storeType) => state.minAndMaxReducer
-  );
+  const { characterList, isLoading } = useCharacter();
+  const { minValue, maxValue } = useMaxAndMin();
   const dispatch: storeDispatchType = useDispatch();
 
   const handlerSearch = () => {

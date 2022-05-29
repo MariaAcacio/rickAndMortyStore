@@ -1,7 +1,7 @@
 import React from 'react';
 import { setHighlightedChar, setCartList } from '../../store/slice/fetchAPI';
-import { useDispatch, useSelector } from 'react-redux';
-import { storeType } from '../../store';
+import { useDispatch } from 'react-redux';
+import { useCharacter } from '../../hooks/useGlobalState';
 import {
   ContainerCard,
   InfoContainer,
@@ -25,17 +25,11 @@ export const Card = ({
   image: string;
   episode: string[];
 }) => {
-  const { cartList } = useSelector(
-    (state: storeType) => state.CharactersReducer
-  );
+  const { cartList } = useCharacter();
   const dispatch = useDispatch();
 
   const handlerButtonCart = (): void => {
-    // console.log(cartList, name);
-
     const findCharacter = cartList.find((character) => character.name === name);
-
-    console.log(cartList, 'fincharacter ', findCharacter);
 
     if (findCharacter) {
       const incrementCharactersCounter = cartList.map((character) => {
@@ -66,7 +60,6 @@ export const Card = ({
             dispatch(
               setHighlightedChar({ name, id, image, status, gender, episode })
             );
-            // console.log(highlightedChar);
           }}
         >
           Highlight

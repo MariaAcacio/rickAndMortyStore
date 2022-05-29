@@ -5,7 +5,6 @@ export const GeneralContainerTwo = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  /* height: auto; */
   width: 70%;
   margin-top: 1rem;
   border-radius: 1rem;
@@ -35,7 +34,6 @@ export const MinContent = styled.div<{ redFlag?: boolean }>`
     font-size: 1.5rem;
     padding: 0.3rem;
     border: 5px solid ${({ redFlag }) => (redFlag ? 'red' : 'none')};
-    /* border: 2px solid yellow; */
   }
 `;
 export const MaxContent = styled.div<{ redFlag?: boolean }>`
