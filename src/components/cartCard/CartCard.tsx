@@ -1,4 +1,7 @@
-import React from 'react';
+import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
+import { setCartList } from '../../store/slice/fetchAPI';
+import { useDispatch, useSelector } from 'react-redux';
+import { storeType } from '../../store';
 import {
   ContainerCart,
   ButtonContainer,
@@ -9,20 +12,62 @@ import {
   General,
 } from './CartCard.elements';
 
-export const CartCard = () => {
+export const CartCard = ({
+  name,
+  id,
+  status,
+  gender,
+  counter,
+}: {
+  name: string;
+  id: number;
+  status: string;
+  gender: string;
+  counter: number;
+}): ReactJSXElement => {
+  const dispatch = useDispatch();
+  const { cartList } = useSelector(
+    (state: storeType) => state.CharactersReducer
+  );
+
+  const handlerDecreaseChar = () => {
+    if (counter === 1) {
+      const newListChar = cartList.filter((char) => char.id !== id);
+      dispatch(setCartList(newListChar));
+    } else {
+      const decreaseCharCounter = cartList.map((char) => {
+        if (char.id === id && char.counter > 0) {
+          return { ...char, counter: char.counter - 1 };
+        } else {
+          return char;
+        }
+      });
+      dispatch(setCartList(decreaseCharCounter));
+    }
+  };
+
+  const handlerDeleteChar = () => {
+    const newListChar = cartList.filter((char) => char.id !== id);
+    dispatch(setCartList(newListChar));
+  };
+
   return (
     <General>
       <ContainerCart>
-        <TextBox>N° - name:</TextBox>
+        <TextBox>{`N°${id} - ${name}`}</TextBox>
         <ButtonContainer>
-          <DecreaseButton>Decrease</DecreaseButton>
-          <DeleteButton>Delete Character</DeleteButton>
+          <DecreaseButton onClick={() => handlerDecreaseChar()}>
+            Decrease
+          </DecreaseButton>
+          <DeleteButton onClick={() => handlerDeleteChar()}>
+            Delete Character
+          </DeleteButton>
         </ButtonContainer>
       </ContainerCart>
       <Features>
-        <div>Counter:</div>
-        <div>Status:</div>
-        <div>Gender:</div>
+        <div>{`Counter: ${counter}`}</div>
+        <div>{`Status: ${status}`}</div>
+        <div>{`Gender: ${gender}`}</div>
       </Features>
     </General>
   );

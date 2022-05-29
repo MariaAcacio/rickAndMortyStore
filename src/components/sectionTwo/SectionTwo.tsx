@@ -33,7 +33,6 @@ export const SectionTwo = () => {
         const numbersForApi = getIdsForApi(minValue, maxValue);
         dispatch(setIsLoading(true));
         dispatch(fetchRamApi(numbersForApi));
-        dispatch(setIsLoading(false));
       } else {
         setRedFlag(true);
       }

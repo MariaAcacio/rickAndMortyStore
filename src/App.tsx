@@ -18,7 +18,7 @@ function App() {
         <Container>
           {true && <SectionOne />}
           <SectionTwo />
-          {true && <SectionThree />}
+          <SectionThree />
         </Container>
       </Provider>
     </div>

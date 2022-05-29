@@ -10,6 +10,7 @@ type charType = {
   status: string;
   image: string;
   episode: string[];
+  counter: number;
 };
 type StateCharList = {
   characterList: charType[];
@@ -52,12 +53,11 @@ export const CharactersReducer = fetchApiSlice.reducer;
 
 export const fetchRamApi =
   (charactersId: string) => (dispatch: storeDispatchType) => {
-    dispatch(setIsLoading(true));
     axios
       .get(`https://rickandmortyapi.com/api/character/${charactersId}`)
       .then((res) => {
         dispatch(setCharacterList(res.data));
+        dispatch(setIsLoading(false));
       })
       .catch((error) => console.log(error));
-    dispatch(setIsLoading(false));
   };

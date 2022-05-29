@@ -30,6 +30,29 @@ export const Card = ({
   );
   const dispatch = useDispatch();
 
+  const handlerButtonCart = (): void => {
+    // console.log(cartList, name);
+
+    const findCharacter = cartList.find((character) => character.name === name);
+
+    console.log(cartList, 'fincharacter ', findCharacter);
+
+    if (findCharacter) {
+      const incrementCharactersCounter = cartList.map((character) => {
+        if (character.id === findCharacter.id) {
+          return { ...character, counter: character.counter + 1 };
+        } else {
+          return character;
+        }
+      });
+      dispatch(setCartList(incrementCharactersCounter));
+    } else {
+      dispatch(
+        setCartList([...cartList, { name, id, gender, status, counter: 1 }])
+      );
+    }
+  };
+
   return (
     <ContainerCard>
       <InfoContainer>
@@ -37,7 +60,7 @@ export const Card = ({
         <div>{name}</div>
       </InfoContainer>
       <ButtonsContainer>
-        <ButtonCart>Add to cart</ButtonCart>
+        <ButtonCart onClick={() => handlerButtonCart()}>Add to cart</ButtonCart>
         <HighlightButton
           onClick={() => {
             dispatch(
