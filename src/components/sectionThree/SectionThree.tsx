@@ -12,7 +12,6 @@ export const SectionThree = () => {
   cartList.forEach(
     (character) => (totalCharCounter = totalCharCounter + character.counter)
   );
-  console.log('total char', totalCharCounter);
 
   return (
     <>

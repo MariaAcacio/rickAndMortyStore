@@ -16,7 +16,7 @@ function App() {
       <Header />
       <Provider store={Store}>
         <Container>
-          {true && <SectionOne />}
+          <SectionOne />
           <SectionTwo />
           <SectionThree />
         </Container>
